@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!--先加载RequireJS-->
+<script src="http://apps.bdimg.com/libs/require.js/2.1.11/require.min.js"></script>
+<script type="text/javascript">
+  requirejs.config({
+    baseUrl:"js"
+  })
+  requirejs(["main"]);   //加载入口模块
+</script>
+</body>
+</html>
