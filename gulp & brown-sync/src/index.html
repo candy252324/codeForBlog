@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!--a.css和b.css合并后的名字叫111.css，这是我随便起的-->
+  <!-- build:css css/111.css -->
+  <link rel="stylesheet" type="text/css" href="./css/a.css">
+  <link rel="stylesheet" type="text/css" href="./css/b.css">
+  <!-- endbuild -->
+
+  <!--合并后的名字叫222.css-->
+  <!-- build:css css/222.css -->
+  <link rel="stylesheet" type="text/css" href="./css/c.css">
+  <link rel="stylesheet" type="text/css" href="./css/d.css">
+  <!-- endbuild -->
+
+</head>
+<body>
+
+  <div class="box1">box1</div>
+  <div class="box2">box2</div>
+
+  <!--两个js合并后的名字叫做333.js-->
+  <!-- build:js js/333.js -->
+  <script type="text/javascript" src="./js/a.js"></script>
+  <script type="text/javascript" src="./js/b.js"></script>
+  <!-- endbuild -->
+</body>
+</html>
