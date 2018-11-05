@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!--写法一：require会自动解析data-main属性，然后找到这个文件-->
+  <script data-main="./js/app.js" src="../tools/require.min.js"></script>
+
+  <!--写法二：require.js文件的引入需写在前面，否则会报错：requirejs is not defined-->
+  <!--
+    <script src="../tools/require.min.js"></script>
+    <script>
+      requirejs.config({
+        baseUrl:"./js/app"
+      })
+      requirejs(["moduleB"]);
+    </script>
+  -->
+</body>
+</html>
