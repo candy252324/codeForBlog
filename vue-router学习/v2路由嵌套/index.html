@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+  <div id=app>   
+    <router-link to="/goods">商品列表</router-link>
+    <router-view></router-view>
+  </div>
+
+  <script>
+    //  GoodsList 中的<router-view>是装二级路由的容器
+    const GoodsList = { template:
+    `
+      <div>
+        商品列表页面
+        <br>
+        <router-link to="/goods/title">显示商品标题</router-link>   
+        <router-link to="/goods/image">显示商品图片</router-link>
+        <router-link to="/cart">显示购物车</router-link>
+        <router-view></router-view>      
+      </div>
+    `}  
+      
+    const  Title={template:"<div>商品标题</div>"}
+    const  Image={template:"<div>商品图片</div>"}
+    const  Cart={template:"<div>购物车</div>"}
+
+    const routes = [
+    {         
+      path:'/goods',   
+      name: 'GoodsList',
+      component: GoodsList,
+      children:[
+        {
+          path:'title',    //二级路由，注意这里不能写'/title'，'/title'是一级路由
+          name:'title',
+          component:Title
+        },
+        {
+          path:'image',    
+          name:'image',
+          component:Image
+        },
+      ] 
+    },
+    {
+      path:'/cart',    //一级路由
+      name:'cart',
+      component:Cart
+    }]
+
+    const router = new VueRouter({
+      routes 
+    })
+
+    const app = new Vue({
+      router,
+      watch:{
+        $route(val,old){
+          console.log(val)
+        }
+      }
+    }).$mount('#app')
+
+  </script>
+
+</body>
+</html>

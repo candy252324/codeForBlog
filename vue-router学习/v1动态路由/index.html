@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+  <div id=app>   
+    <router-link to="/goods/89/user/candy">link1</router-link>
+    <router-link to="/goods/90/user/hank">link2</router-link>
+    <router-view></router-view>
+  </div>
+
+  <script>
+    const GoodsList = { template:
+    `
+      <div>
+        <p>goodsId： {{$route.params.goodsId}}</p>
+        <p>goodsName：{{$route.params.goodsName}}</p>
+      </div> 
+    `}  
+
+    const routes = [
+    {         
+      path:'/goods/:goodsId/user/:goodsName',   // goodsId和goodsName是路由的参数而非页面跳转的参数
+      name: 'GoodsList',
+      component: GoodsList   
+    }
+    ]
+
+    const router = new VueRouter({
+      routes 
+    })
+
+    const app = new Vue({
+      router,
+      watch:{
+        $route(val,old){
+          console.log(val)
+        }
+      }
+    }).$mount('#app')
+
+  </script>
+
+</body>
+</html>

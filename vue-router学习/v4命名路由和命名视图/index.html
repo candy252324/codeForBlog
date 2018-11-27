@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+		<div id="app">
+			<router-view></router-view>
+			<router-view name="title2"></router-view>
+			<router-view name="title3"></router-view>
+		</div>
+
+		<script>
+			const Title1 = { template: `
+        <div>          
+          <router-link v-bind:to='{name:"cart",params:{cartId:123}}'>title1</router-link>
+        </div>
+      ` };
+			const Title2 = { template: "<div>title2</div>" };
+			const Title3 = { template: "<div>title3</div>" };
+			const Cart = { template: `<div>购物车： {{$route.params.cartId}}</div>` };
+
+			const routes = [
+				{
+					path: "/",
+					components: {
+						default: Title1,
+						title2: Title2,
+						title3: Title3
+					}
+				},
+        {
+          path:'/cart/:cartId',
+          name:'cart',
+          component:Cart,
+        }
+			];
+
+			const router = new VueRouter({
+				routes
+			});
+
+			const app = new Vue({
+				router,
+        watch:{
+        $route(val,old){
+          console.log(val)
+        }
+      }
+			}).$mount("#app");
+		</script>
+	</body>
+</html>
